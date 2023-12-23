@@ -4,6 +4,7 @@
 //**************************Core Peripherals Base Addresses*************************
 #define SYSTICK_BASE_ADDRESS		0xE000E010UL
 #define NVIC_BASE_ADDRESS			0xE000E100UL
+#define SCB_BASE_ADDRESS			0xE000E008UL
 
 //**************************Various Memories Base Addresses*************************
 
@@ -36,8 +37,8 @@
 
                                                              
 //*************************APB2 Peripherals Base Addresses*****************************
-
-
+#define SYSCFG_BASE_ADDRESS			0x40013800UL
+#define EXTI_BASE_ADDRESS			0x40013C00UL
 
                                                              
 //*************************GPIO Register Definition Structure*************************
@@ -106,7 +107,7 @@ typedef struct
 	volatile uint32_t CALIB;
 }SYSTICK_RegDef_t;
 
-//*************************SYSTICK Register Definition Structure*************************
+//*************************NVIC Register Definition Structure*************************
 
 
 typedef struct
@@ -120,10 +121,62 @@ typedef struct
 	volatile uint32_t ICPR[8];
 	volatile uint32_t Res4[24];
 	volatile uint32_t IABR[8];
-	volatile uint32_t Res5[44];
-	volatile uint32_t IPR[60];
+	volatile uint32_t Res5[56];
+	volatile uint8_t IPR[240];
 }NVIC_RegDef_t;
 
+//*************************SCB Register Definition Structure*************************
+
+
+typedef struct
+{
+	volatile uint32_t ACTLR;
+	volatile uint32_t Res1[829];
+	volatile uint32_t CPUID;
+	volatile uint32_t ICSR;
+	volatile uint32_t VTOR;
+	volatile uint32_t AIRCR;
+	volatile uint32_t SCR;
+	volatile uint32_t CCR;
+	volatile uint32_t SHPR1;
+	volatile uint32_t SHPR2;
+	volatile uint32_t SHPR3;
+	volatile uint32_t SHCRS;
+	volatile uint32_t CFSR;
+	volatile uint32_t HFSR;
+	volatile uint32_t Res2;
+	volatile uint32_t MMAR;
+	volatile uint32_t BFAR;
+	volatile uint32_t AFSR;
+}SCB_RegDef_t;
+
+//*************************EXTI Register Definition Structure*************************
+
+
+typedef struct
+{
+	volatile uint32_t IMR;
+	volatile uint32_t EMR;
+	volatile uint32_t RTSR;
+	volatile uint32_t FTSR;
+	volatile uint32_t SWIER;
+	volatile uint32_t PR;
+
+}EXTI_RegDef_t;
+
+
+//*************************SYSCFG Register Definition Structure*************************
+
+
+typedef struct
+{
+	volatile uint32_t MEMRMP;
+	volatile uint32_t PMC;
+	volatile uint32_t EXTICR[4];
+	volatile uint32_t CMPCR;
+	volatile uint32_t CFGR;
+
+}SYSCFG_RegDef_t;
 //*************************GPIO Peripheral Definition*************************
 #define GPIOA			((GPIO_RegDef_t*)GPIOA_BASE_ADDRESS)
 #define GPIOB			((GPIO_RegDef_t*)GPIOB_BASE_ADDRESS)
@@ -145,6 +198,23 @@ typedef struct
 
 
 #define NVIC			((NVIC_RegDef_t*)NVIC_BASE_ADDRESS)
+
+//*************************SCB Peripheral Definition*************************
+
+
+#define SCB			((SCB_RegDef_t*)SCB_BASE_ADDRESS)
+
+
+//*************************SYSCFG Peripheral Definition*************************
+
+
+#define SYSCFG			((SYSCFG_RegDef_t*)SYSCFG_BASE_ADDRESS)
+
+
+//*************************EXTI Peripheral Definition*************************
+
+
+#define EXTI			((EXTI_RegDef_t*)EXTI_BASE_ADDRESS)
 
 
 
