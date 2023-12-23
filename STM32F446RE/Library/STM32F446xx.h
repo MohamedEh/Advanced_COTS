@@ -173,7 +173,9 @@ typedef struct
 	volatile uint32_t MEMRMP;
 	volatile uint32_t PMC;
 	volatile uint32_t EXTICR[4];
+	volatile uint32_t RES1[2];
 	volatile uint32_t CMPCR;
+	volatile uint32_t RES2[2];
 	volatile uint32_t CFGR;
 
 }SYSCFG_RegDef_t;
