@@ -85,7 +85,7 @@ uint8_t EXTI_u8SetTrigSrc(EXTI_Line_t copy_u8ExtiLine,EXTI_Trigger_t copy_u8Trig
 {
 	uint8_t Local_u8ErrorState=OK;
 
-	if((copy_pConfig->ExtiLine>=EXTI0_)&&(copy_pConfig->ExtiLine<=EXTI15_))
+	if((copy_u8ExtiLine>=EXTI0_)&&(copy_u8ExtiLine<=EXTI15_))
 	{
 
 			/*Setting the trigger configuration*/
